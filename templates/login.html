@@ -1,9 +1,22 @@
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
     <h1>Login</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <form method="POST">
         {{ form.hidden_tag() }}
-        {{ form.username.label }} {{ form.username(size=20) }}
-        {{ form.password.label }} {{ form.password(size=20) }}
-        {{ form.submit() }}
+        {{ form.username.label }} {{ form.username }}
+        {{ form.password.label }} {{ form.password }}
+        {{ form.submit }}
     </form>
-{% endblock %}
+</body>
+</html>
